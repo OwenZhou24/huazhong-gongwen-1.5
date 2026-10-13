@@ -1,0 +1,36 @@
+# ===== 敏感 / 运行时产物，禁止提交 =====
+# 脱敏引擎运行时生成的映射表（每次脱敏都会重写，无版本价值，且含真实信息）
+sensitive_mappings.json
+sensitive_mappings*.json
+
+# 平台本地安装元数据（含本机安装时间戳，无意义）
+_user_meta.json
+_skillhub_meta.json
+_meta.json
+
+# 本地企业名单覆盖文件（把真实名称放这里，避免提交）
+config/company_names.local.json
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# ===== 生成的文档产物（公文正文通常涉密，不进仓库）=====
+*.docx
+*.doc
+*.pdf
+output/
+tmp/
+*.tmp
+
+# ===== 编辑器 / 系统 =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

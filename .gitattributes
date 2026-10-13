@@ -1,0 +1,12 @@
+# 统一换行符，避免 Windows / macOS / Linux 协作时反复出现 CRLF 改动
+* text=auto eol=lf
+
+# 二进制文件不做换行转换
+*.docx binary
+*.doc binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
