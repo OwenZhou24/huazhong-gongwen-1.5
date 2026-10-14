@@ -37,7 +37,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_PKG = os.path.dirname(HERE)
 
 REQUIRED = [
-    'SKILL.md', 'sensitive_detector.py', 'sensitive_mappings.json',
+    'SKILL.md', 'sensitive_detector.py',
     'config/company_names.json', 'checklists/quality-checklist.md',
     'references/document-templates.md', 'references/writing-techniques.md',
     'references/gb-t-9704-2012-standard.md',
@@ -100,6 +100,11 @@ def c1(pkg):
     miss = [f for f in REQUIRED if not os.path.exists(os.path.join(pkg, f))]
     step('1 必需文件完整性', not miss,
          '全部就位（%d 项）' % len(REQUIRED) if not miss else '缺失：%s' % miss)
+    # 运行时脱敏映射表：属运行产物，首次脱敏时才由引擎生成，缺失不算缺陷（见 .gitignore）
+    mp = os.path.join(pkg, 'sensitive_mappings.json')
+    step('1b 运行时脱敏映射表', True,
+         ('已存在（%d 字节）' % os.path.getsize(mp)) if os.path.exists(mp)
+         else '未生成，首次脱敏时自动创建（正常）')
 
 
 # ---------- 2 frontmatter ----------
